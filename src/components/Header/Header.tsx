@@ -1,7 +1,7 @@
 import './Header.scss';
-import { ReactComponent as Logo } from '../assets/logo.svg';
-import { ReactComponent as LogOutIcon } from '../assets/sign-out-icon.svg';
-import Nav from './Nav';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as LogOutIcon } from '../../assets/sign-out-icon.svg';
+import Nav from '../Nav/Nav';
 
 const Header = () => {
   return (

@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import { ServicePage } from '../pages/servicePage/servicePage';
-import StudyCertPage from '../pages/main/StudyCertPage';
+import StudyCertPage from '../pages/StudyCertificatePage/StudyCertPage';
 import { ConsultationPage } from '../pages/сonsultationPage/consultationPage';
 import { IllnessPage } from '../pages/illnessPage/illnessPage';
 

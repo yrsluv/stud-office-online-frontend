@@ -40,13 +40,15 @@ const StudyCertPage = () => {
 
   return (
     <main className="studyCertPage" role="main">
-      <h1 className="h1 colorBlue">Запрос справки об обучении</h1>
-      <Button type="primary" onClick={handleGetSudyCert}>
-        Запросить справку об обучении
-      </Button>
+      <div className="studyCertPage__wrapper">
+        <h1 className="h1 colorBlue">Запрос справки об обучении</h1>
+        <Button type="primary" onClick={handleGetSudyCert}>
+          Запросить справку об обучении
+        </Button>
 
-      {permissionError && <p className="colorRed p-small">Вы ещё/уже не учитесь в МИФИ</p>}
-      {pdfGenError && <p className="colorRed p-small">Ошибка генерации справки</p>}
+        {permissionError && <p className="colorRed p-small">Вы ещё/уже не учитесь в МИФИ</p>}
+        {pdfGenError && <p className="colorRed p-small">Ошибка генерации справки</p>}
+      </div>
     </main>
   );
 };
