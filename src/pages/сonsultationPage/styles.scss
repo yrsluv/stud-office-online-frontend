@@ -1,8 +1,35 @@
 @import '../../index.scss';
 
-.consultation__wrapper {
+.service__wrapper {
   background-color: $colorLightGray;
   display: flex;
   flex-direction: column;
+  padding-top: 45px;
   height: 100%;
+  max-width: 1200px;
+  width: 100%;
+
+  .consultation__pickersContainer {
+    display: flex;
+    gap: 32px;
+
+    .consultation__picker {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .ant-select-selector {
+      height: 50px;
+
+      .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .button {
+    max-width: 283px;
+    height: 48px;
+  }
 }

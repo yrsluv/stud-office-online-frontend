@@ -22,7 +22,7 @@ export const ServicePage = () => {
           <ServiceButton
             icon={<Heart />}
             title="Отправить справку о заболеваниях"
-            navigate={() => navigate(``)}
+            navigate={() => navigate(`illness`)}
           />
           <ServiceButton
             icon={<Calendar />}
