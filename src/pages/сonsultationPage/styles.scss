@@ -1,0 +1,8 @@
+@import '../../index.scss';
+
+.consultation__wrapper {
+  background-color: $colorLightGray;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

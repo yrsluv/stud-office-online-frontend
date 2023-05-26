@@ -6,10 +6,12 @@ import LogInProcess from './processes/LogInProcess';
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="*" element={<MainProcess />} />
-        <Route path="login" element={<LogInProcess />} />
-      </Routes>
+      <div className="wrapper">
+        <Routes>
+          <Route path="*" element={<MainProcess />} />
+          <Route path="login" element={<LogInProcess />} />
+        </Routes>
+      </div>
     </div>
   );
 }
