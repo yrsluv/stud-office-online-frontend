@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles.scss';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button, Input } from 'antd';
@@ -12,7 +12,7 @@ export const AuthPage = () => {
   }, [response]);
 
   return (
-    <>
+    <main role="main">
       <div className="authPage">
         <div className="authLogos">
           <Logo />
@@ -44,12 +44,12 @@ export const AuthPage = () => {
             >
               Войти
             </Button>
-            <span className={`authModal__errorAlert colorRed p-small ${!response && 'active'}`}>
+            <p className={`authModal__errorAlert colorRed p-small ${!response && 'active'}`}>
               Неверный логин или пароль
-            </span>
+            </p>
           </div>
         </form>
       </div>
-    </>
+    </main>
   );
 };

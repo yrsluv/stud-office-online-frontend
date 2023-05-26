@@ -1,3 +1,4 @@
+import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import MainProcess from './processes/MainProcess';
 import LogInProcess from './processes/LogInProcess';
