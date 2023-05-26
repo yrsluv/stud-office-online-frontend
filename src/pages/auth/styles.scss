@@ -1,0 +1,39 @@
+@import '../../index.scss';
+
+.authModal__container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 348px;
+  height: 315px;
+  background: $colorWhite;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  padding: 20px 30px;
+
+  .authModal__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .authModal__field {
+    }
+  }
+
+  .authModal__buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .authModal__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 121px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}
