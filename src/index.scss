@@ -1,41 +1,114 @@
-$colorLightGray: #F9F9F9;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+%h1 {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 44px;
+}
+
+.h1 {
+  @extend %h1;
+}
+
+%h2 {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.h2 {
+  @extend %h2;
+}
+
+%h3 {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.h3 {
+  @extend %h3;
+}
+
+%h4 {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.h4 {
+  @extend %h4;
+}
+
+%paragraph {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.paragraph {
+  @extend %paragraph;
+}
+
+%p-small {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.p-small {
+  @extend %p-small;
+}
+
+$colorLightGray: #f9f9f9;
 $colorGray: #747474;
-$colorRed: #D53C34;
-$colorBlue: #0067B1;
+$colorRed: #d53c34;
+$colorBlue: #0067b1;
 $colorBlueHover: #005898;
-$colorDarkGrey: #2D343E;
-$colorSemiBlack: #1B1B1B;
-$colorWhite: #FFFFFF;
+$colorDarkGrey: #2d343e;
+$colorSemiBlack: #1b1b1b;
+$colorWhite: #ffffff;
 
-
-.colorLightGray{
-	color: $colorLightGray;
+.colorLightGray {
+  color: $colorLightGray;
 }
 
 .colorGray {
-	color: $colorGray;
+  color: $colorGray;
 }
 
 .colorRed {
-	color: $colorRed;
+  color: $colorRed;
 }
 
 .colorBlue {
-	color: $colorBlue;
+  color: $colorBlue;
 }
 
 .colorBlueHover {
-	color: $colorBlueHover;
+  color: $colorBlueHover;
 }
 
 .colorDarkGrey {
-	color: $colorDarkGrey;
+  color: $colorDarkGrey;
 }
 
 .colorSemiBlack {
-	color: $colorSemiBlack;
+  color: $colorSemiBlack;
 }
 
 .colorWhite {
-	color: $colorWhite;
+  color: $colorWhite;
 }

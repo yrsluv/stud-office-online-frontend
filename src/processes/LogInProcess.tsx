@@ -1,4 +1,11 @@
+import { AuthPage } from '../pages/auth/authPage';
+
 const LogInProcess = () => {
-  return <>LogInProcess</>;
+  return (
+    <>
+      <AuthPage />
+    </>
+  );
 };
+
 export default LogInProcess;

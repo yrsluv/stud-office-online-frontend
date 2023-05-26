@@ -3,6 +3,7 @@
 .authModal__container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 32px;
   width: 348px;
   height: 315px;
@@ -17,6 +18,9 @@
     gap: 20px;
 
     .authModal__field {
+      input {
+        padding: 12px 24px;
+      }
     }
   }
 
@@ -24,7 +28,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-
+    justify-content: center;
     .authModal__button {
       display: flex;
       align-items: center;
