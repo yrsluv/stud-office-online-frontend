@@ -1,1 +1,12 @@
-@import '../index.scss';
+@import '../../index.scss';
+
+.serviceButton__container {
+  box-shadow: $shadowSmall;
+  border-radius: 2px;
+  padding: 30px 42px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  width: 282px;
+  height: 118px;
+}

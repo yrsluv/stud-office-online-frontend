@@ -1,13 +1,18 @@
-import './Header.scss';
+import React, { ReactNode } from 'react';
+import './serviceButton.scss';
 
-const ServiceButton = (logo: string) => {
-  const SvgComponent = require(`../../assets/${logo}`);
+interface ServiceButtonProps {
+  icon: ReactNode;
+  title: string;
+}
 
+const ServiceButton: React.FC<ServiceButtonProps> = ({ icon, title }) => {
   return (
     <div className="serviceButton__container">
-      <img src={SvgComponent} />
-      <span>Получить справку об обучении</span>
+      {icon}
+      <span className="paragraph">{title}</span>
     </div>
   );
 };
+
 export default ServiceButton;

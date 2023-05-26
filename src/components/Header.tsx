@@ -5,14 +5,16 @@ import Nav from './Nav';
 
 const Header = () => {
   return (
-    <header className="header">
-      <Logo />
-      <Nav />
-      <button className="header__logOutButton">
-        <LogOutIcon />
-        Выход
-      </button>
-    </header>
+    <div className="header">
+      <header className="header__content">
+        <Logo />
+        <Nav />
+        <button className="header__logOutButton">
+          <LogOutIcon />
+          Выход
+        </button>
+      </header>
+    </div>
   );
 };
 export default Header;

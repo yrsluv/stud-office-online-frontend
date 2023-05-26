@@ -1,74 +1,15 @@
 @import '../../index.scss';
 
-.authPage {
+.servicePage__container {
+  background-color: $colorLightGray;
   display: flex;
-  gap: 100px;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 
-  .authLogos {
+  .servicePage__inner {
     display: flex;
-    flex-direction: column;
+    flex-flow: row wrap;
     gap: 24px;
-    align-items: center;
-
-    svg {
-      width: 314px;
-      height: auto;
-    }
-  }
-
-  .authModal__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 32px;
-    width: 348px;
-    height: 315px;
-    background: $colorWhite;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 2px;
-    padding: 20px 30px;
-
-    .authModal__fields {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      .authModal__field {
-        input {
-          padding: 12px 24px;
-        }
-      }
-    }
-
-    .authModal__buttonContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      justify-content: center;
-
-      .authModal__button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 121px;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-      }
-
-      .authModal__errorAlert {
-        opacity: 0;
-        transition: 200ms ease-in-out;
-        text-align: center;
-
-        &.active {
-          opacity: 1;
-        }
-      }
-    }
+    max-width: 588px;
   }
 }

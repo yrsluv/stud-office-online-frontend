@@ -1,9 +1,19 @@
 @import '../index.scss';
 
 .footer {
+  .footer__content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding: $defaultPadding;
+  }
+  width: 100%;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   color: $colorWhite;
   background-color: $colorDarkGrey;
 
