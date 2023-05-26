@@ -1,0 +1,12 @@
+@import '../index.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $colorWhite;
+
+  .header__logOutButton {
+    border: none;
+    background-color: transparent;
+  }
+}
