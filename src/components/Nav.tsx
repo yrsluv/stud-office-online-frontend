@@ -1,6 +1,5 @@
-import './Nav.scss';
 import { Tabs } from 'antd';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const navigate = useNavigate();

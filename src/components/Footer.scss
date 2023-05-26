@@ -1,0 +1,24 @@
+@import '../index.scss';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $colorWhite;
+  background-color: $colorDarkGrey;
+
+  .footer__contactBox {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 750px;
+
+    & > * {
+      font-size: 14px;
+    }
+  }
+
+  .footer__copyright {
+    font-size: 10px;
+  }
+}
