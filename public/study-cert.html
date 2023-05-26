@@ -1,89 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body style="">
-		<div class="header" style="white-space: pre-wrap; width: 50%; text-align: center;">
-МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ
-РОССИЙСКОЙ ФЕДЕРАЦИИ
-ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ
-УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ
-«Национальный исследовательский 
-ядерный университет «МИФИ»
-<strong>Обнинский институт
-атомной энергетики -</strong>
-филиал федерального государственного
-автономного образовательного учреждения 
-высшего образования
-«Национальный исследовательский 
-ядерный университет «МИФИ»
-<strong>(ИАТЭ НИЯУ МИФИ)</strong>
-249040, Калужская область, городской округ «Город
-Обнинск», г.Обнинск, тер. Студгородок, д.1 
-тел. +7(484)397-94-90, факс +7(484)397-08-22
-E-mail: info@iate.obninsk.ru
-«{date}» {month} {year} № {stud_num}
-На № {field1} от {field2}
-		</div>
-
-		<div class="main">
-			<p>СПРАВКА</p>
-				Выдана {fullName} в том, что он(а) является студентом(кой) 1 курса (Очная форма обучения) направления {course}
-				Обнинского института атомной энергетики - филиала федерального государственного автономного образовательного учреждения
-				высшего образования «Национальный исследовательский ядерный университет «МИФИ» (ИАТЭ НИЯУ МИФИ).
-				Гражданство: РФ.
-				Начало обучения {eduStartDate} года.
-				Предпологаемая дата окончания обучения {eduEndDate} года.
-				Приказ о зачислении {prikazNum} от {prikaxDate} года.
-				Основания обучения: {typeOfEdu}
-				Справка дана для предъявления	по месту требования.
-		</div>
-		<p class="footer">И. О. зам. директора ИАТЭ НИЯУ МИФИ _____________</p>
-</body>
-</html>
-<!-- 
-import React from 'react';
-import { saveAs } from 'file-saver';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
-
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4',
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-});
-
-const PdfGenerator: React.FC = () => {
-  const handleDownloadPDF = () => {
-    const doc = (
-      <Document>
-        <Page size="A4" style={styles.page}>
-          <View style={styles.section}>
-            <Text>Hello, PDF!</Text>
-          </View>
-        </Page>
-      </Document>
-    );
-
-    const asPdfBlob = new Blob([PDFViewer.renderAsPdf(doc)], { type: 'application/pdf' });
-    saveAs(asPdfBlob, 'document.pdf');
-  };
-
-  return (
-    <div>
-      <h1>Convert HTML to PDF</h1>
-      <button onClick={handleDownloadPDF}>Download PDF</button>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Справка об обучении</title>
+  </head>
+  <body class="page">
+    <div class="header" style="white-space: pre-wrap; width: 50%; text-align: center">
+      МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ
+      АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ «Национальный исследовательский
+      ядерный университет «МИФИ»
+      <strong>Обнинский институт атомной энергетики -</strong>
+      филиал федерального государственного автономного образовательного учреждения высшего
+      образования «Национальный исследовательский ядерный университет «МИФИ»
+      <strong>(ИАТЭ НИЯУ МИФИ)</strong>
+      249040, Калужская область, городской округ «Город Обнинск», г.Обнинск, тер. Студгородок, д.1
+      тел. +7(484)397-94-90, факс +7(484)397-08-22 E-mail: info@iate.obninsk.ru «{date}» {month}
+      {year} № {stud_num} На № {field1} от {field2}
     </div>
-  );
-};
 
-export default PdfGenerator; -->
+    <div class="main">
+      <p>СПРАВКА</p>
+      Выдана {fullName} в том, что он(а) является студентом(кой) 1 курса (Очная форма обучения)
+      направления {course} Обнинского института атомной энергетики - филиала федерального
+      государственного автономного образовательного учреждения высшего образования «Национальный
+      исследовательский ядерный университет «МИФИ» (ИАТЭ НИЯУ МИФИ). Гражданство: РФ. Начало
+      обучения {eduStartDate} года. Предпологаемая дата окончания обучения {eduEndDate} года. Приказ
+      о зачислении {prikazNum} от {prikaxDate} года. Основания обучения: {typeOfEdu} Справка дана
+      для предъявления по месту требования.
+    </div>
+    <p class="footer">И. О. зам. директора ИАТЭ НИЯУ МИФИ _____________</p>
+  </body>
+</html>
