@@ -7,6 +7,7 @@ import axios from '../../api/axios';
 import useAuth from '../../hooks/useAuth';
 import { Role } from '../../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer';
 
 type ResponseData = {
   id: number;
@@ -40,43 +41,50 @@ export const AuthPage = () => {
 
   return (
     <main role="main">
-      <div className="authPage">
-        <div className="authLogos">
-          <Logo />
-          <span className="h3">Личный кабинет студента</span>
-        </div>
-        <form className="authModal__container">
-          <div className="authModal__fields colorGray">
-            <div className="authModal__field">
-              <span className="authModal__label longRegular">E-mail:</span>
-              <Input
-                placeholder="Введите ваш e-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                status={error ? 'error' : undefined}
-              />
-            </div>
-            <div className="authModal__field">
-              <span className="authModal__label longRegular">Пароль:</span>
-              <Input.Password
-                placeholder="Введите ваш пароль"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                status={error ? 'error' : undefined}
-              />
-            </div>
+      <div className="authPage__wrapper">
+        <div className="authPage">
+          <div className="authLogos">
+            <Logo />
+            <span className="h3">Личный кабинет студента</span>
           </div>
+          <form className="authModal__container">
+            <div className="authModal__fields colorGray">
+              <div className="authModal__field">
+                <span className="authModal__label longRegular">E-mail:</span>
+                <Input
+                  placeholder="Введите ваш e-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  status={error ? 'error' : undefined}
+                />
+              </div>
+              <div className="authModal__field">
+                <span className="authModal__label longRegular">Пароль:</span>
+                <Input.Password
+                  placeholder="Введите ваш пароль"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                  status={error ? 'error' : undefined}
+                />
+              </div>
+            </div>
 
-          <div className="authModal__buttonContainer">
-            <Button className="authModal__button longRegular" type="primary" onClick={handleSubmit}>
-              Войти
-            </Button>
-            <p className={`authModal__errorAlert colorRed p-small ${error && 'active'}`}>
-              Неверный логин или пароль
-            </p>
-          </div>
-        </form>
+            <div className="authModal__buttonContainer">
+              <Button
+                className="authModal__button longRegular"
+                type="primary"
+                onClick={handleSubmit}
+              >
+                Войти
+              </Button>
+              <p className={`authModal__errorAlert colorRed p-small ${error && 'active'}`}>
+                Неверный логин или пароль
+              </p>
+            </div>
+          </form>
+        </div>
+        <Footer />
       </div>
     </main>
   );
