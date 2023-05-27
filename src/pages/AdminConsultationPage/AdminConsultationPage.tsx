@@ -13,9 +13,13 @@ type Slot = {
 };
 
 export const AdminConsultationPage = () => {
-  const [pickedDate, setPickedDate] = useState<string | null>(dayjs().toString());
+  const [pickedDate, setPickedDate] = useState<string | null>(
+    [dayjs().year(), dayjs().month(), dayjs().date()].join('-')
+  );
   const [fetchedSlots, setFetchedSlots] = useState<Slot[]>([]);
   const [error, setError] = useState(false);
+
+  const dayjsToPgDate = (dayjsDate: string) => `${dayjsDate}T00:00:00.000000Z`;
 
   useEffect(() => {
     if (pickedDate === null) return;
@@ -23,7 +27,7 @@ export const AdminConsultationPage = () => {
     const fetchSlots = async () => {
       try {
         const response = await axios.get<Slot[]>('/Consultations', {
-          params: { date: pickedDate },
+          params: { date: dayjsToPgDate(pickedDate) },
         });
         setFetchedSlots(response.data);
         setError(false);
