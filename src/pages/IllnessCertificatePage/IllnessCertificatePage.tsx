@@ -56,7 +56,7 @@ export const IllnessCertificatePage = () => {
           </p> */}
         </Dragger>
         <Button
-          className="consultation__button button longRegular"
+          className="consultation__button illness__button button_red button longRegular"
           type="primary"
           onClick={handleSubmit}
         >

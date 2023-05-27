@@ -5,6 +5,7 @@ import jsPDF from 'jspdf';
 import '../../assets/times-normal';
 import '../../assets/times-bold';
 import '../../assets/times-italic';
+import './styles.scss';
 import '../../assets/times-bolditalic';
 
 const StudyCertPage = () => {

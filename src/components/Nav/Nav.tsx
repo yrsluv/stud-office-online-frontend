@@ -29,7 +29,7 @@ const Nav = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="nav" role="navigation">
+    <nav className="nav paragraph" role="navigation">
       <ProtectedContent allowedRole={Role.Student}>
         <Tabs activeKey={activeKey} items={itemsStudent} onChange={(key) => navigate(`/${key}`)} />
       </ProtectedContent>
