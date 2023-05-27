@@ -46,7 +46,10 @@
 
       .authModal__field {
         input {
-          padding: 12px 24px;
+          padding: 12px 12px;
+        }
+        .authModal__email {
+          padding: 16px 23px;
         }
       }
     }

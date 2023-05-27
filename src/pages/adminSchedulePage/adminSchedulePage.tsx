@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import type { DatePickerProps } from 'antd';
 import { DatePicker } from 'antd';
+import dayjs from 'dayjs';
 
 export const AdminSchedulePage = () => {
   const [pickedDate, setPickedDate] = useState<string | null>(null);
@@ -97,7 +98,7 @@ export const AdminSchedulePage = () => {
 
   function slot(time: string, name?: string, course?: number, group?: string) {
     return (
-      <div className="time-slot">
+      <div className={`time-slot ${name ? 'time-slot__active' : ''}`}>
         <p className="time-slot_time">{time}</p>
         {name && (
           <>
@@ -120,7 +121,11 @@ export const AdminSchedulePage = () => {
       <div className="schedule__wrapper">
         <h1 className="h1 colorBlue">Расписание консультаций студ-офиса</h1>
         <div className="schedule__inner">
-          <DatePicker onChange={onDateChange} style={{ width: 282, height: 50 }} />
+          <DatePicker
+            onChange={onDateChange}
+            style={{ width: 282, height: 50 }}
+            defaultValue={dayjs()}
+          />
           <div className="schedule__table">
             {allSlots.map((sl) => {
               if (fetchedArr.some((el) => el.time == sl.time))

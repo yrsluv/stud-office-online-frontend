@@ -9,6 +9,7 @@ import { FeedPage } from '../pages/feedPage/feedPage';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import { StudentsPage } from '../pages/studentsPage/studenstPage';
 import { AdminSchedulePage } from '../pages/adminSchedulePage/adminSchedulePage';
+import { AddAnnouncementPage } from '../pages/addAnnouncement/addAnnouncementPage';
 
 const MainProcess = () => {
   return (
@@ -23,6 +24,7 @@ const MainProcess = () => {
           <Route path="illness" element={<IllnessPage />} />
           <Route path="students" element={<StudentsPage />} />
           <Route path="schedule" element={<AdminSchedulePage />} />
+          <Route path="addannouncement" element={<AddAnnouncementPage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

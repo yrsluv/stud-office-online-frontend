@@ -8,6 +8,12 @@
   height: 100vh;
 }
 
+* {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  line-height: 120%;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -101,11 +107,12 @@
 }
 
 $colorLightGray: #f9f9f9;
+$colorGray2: #cecece;
 $colorGray: #747474;
 $colorRed: #d53c34;
 $colorRedHover: #ab2720;
-$colorBlue: #004374;
-$colorBlueHover: #002947;
+$colorBlue: #0067b1;
+$colorBlueHover: #005898;
 $colorDarkGrey: #2d343e;
 $colorSemiBlack: #1b1b1b;
 $colorWhite: #ffffff;
