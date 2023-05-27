@@ -8,7 +8,94 @@ export const ConsultationPage = () => {
   const [pickedDate, setPickedDate] = useState<string | null>(null);
   const [isFieldsCorrect, setIsFieldsCorrect] = useState<boolean>(true);
 
-  const format = 'HH:mm';
+  const fetchedArr: any[] = [
+    {
+      time: '10:00',
+      name: 'Иванов И И',
+      course: 2,
+      group: 'ИВР23',
+    },
+    {
+      time: '10:30',
+      name: 'Иванов И И',
+      course: 2,
+      group: 'ИВР23',
+    },
+  ];
+  const allSlots = [
+    {
+      time: '10:00',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '10:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '10:30',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '10:45',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:00',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:00',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '11:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+  ];
 
   const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
     setPickedDate(dateString);

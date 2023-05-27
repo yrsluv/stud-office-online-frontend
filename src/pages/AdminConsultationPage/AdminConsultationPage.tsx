@@ -1,27 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles.scss';
 import type { DatePickerProps } from 'antd';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
+import axios from '../../api/axios';
+
+type Slot = {
+  time: string;
+  name: string | null;
+  course: number | null;
+  group: string | null;
+};
 
 export const AdminConsultationPage = () => {
-  const [pickedDate, setPickedDate] = useState<string | null>(null);
+  const [pickedDate, setPickedDate] = useState<string | null>(dayjs().toString());
+  const [fetchedSlots, setFetchedSlots] = useState<Slot[]>([]);
+  const [error, setError] = useState(false);
 
-  const fetchedArr: any[] = [
-    {
-      time: '10:00',
-      name: 'Иванов И И',
-      course: 2,
-      group: 'ИВР23',
-    },
-    {
-      time: '10:30',
-      name: 'Иванов И И',
-      course: 2,
-      group: 'ИВР23',
-    },
-  ];
-  const allSlots = [
+  useEffect(() => {
+    if (pickedDate === null) return;
+
+    const fetchSlots = async () => {
+      try {
+        const response = await axios.get<Slot[]>('/Consultations', {
+          params: { date: pickedDate },
+        });
+        setFetchedSlots(response.data);
+        setError(false);
+      } catch {
+        setError(true);
+      }
+    };
+    fetchSlots();
+  }, [pickedDate]);
+
+  const allSlots: Slot[] = [
     {
       time: '10:00',
       name: null,
@@ -96,9 +109,9 @@ export const AdminConsultationPage = () => {
     },
   ];
 
-  function slot(time: string, name?: string, course?: number, group?: string) {
+  function slot(key: number, time: string, name?: string, course?: number, group?: string) {
     return (
-      <div className={`time-slot ${name ? 'time-slot__active' : ''}`}>
+      <div className={`time-slot ${name ? 'time-slot__active' : ''}`} key={key}>
         <p className="time-slot_time">{time}</p>
         {name && (
           <>
@@ -127,13 +140,14 @@ export const AdminConsultationPage = () => {
             defaultValue={dayjs()}
           />
           <div className="schedule__table">
-            {allSlots.map((sl) => {
-              if (fetchedArr.some((el) => el.time == sl.time))
-                sl = { ...fetchedArr.find((ell) => ell.time == sl.time) };
-              return slot(sl.time, sl.name!, sl.course!, sl.group!);
+            {allSlots.map((sl: any, index) => {
+              if (fetchedSlots.some((el) => el.time == sl.time))
+                sl = { ...fetchedSlots.find((ell) => ell.time == sl.time) };
+              return slot(index, sl.time, sl.name!, sl.course!, sl.group!);
             })}
           </div>
         </div>
+        {error && <p className="colorRed p-small">Ошибка загрузки расписания</p>}
       </div>
     </main>
   );

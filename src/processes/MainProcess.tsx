@@ -21,12 +21,12 @@ const MainProcess = () => {
         <Route path="service">
           <Route index element={<ServicePage />} />
           <Route path="study-cert" element={<StudyCertPage />} />
-          <Route path="consultation" element={<ConsultationPage />} />
           <Route path="illness" element={<IllnessCertificatePage />} />
-          <Route path="students" element={<StudentsPage />} />
-          <Route path="schedule" element={<AdminConsultationPage />} />
-          <Route path="addannouncement" element={<AddAnnouncementPage />} />
+          <Route path="consultation" element={<ConsultationPage />} />
         </Route>
+        <Route path="announcement" element={<AddAnnouncementPage />} />
+        <Route path="consultations" element={<AdminConsultationPage />} />
+        <Route path="students" element={<StudentsPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
