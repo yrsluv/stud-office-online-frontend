@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import './styles.scss';
-
-import { useNavigate } from 'react-router-dom';
 import FeedCard from '../../components/feedCard/feedCard';
 
 export const FeedPage = () => {
-  const navigate = useNavigate();
-
   const feed = [
     {
       title: 'Название объявления, название название',
@@ -29,10 +24,10 @@ export const FeedPage = () => {
   ];
 
   return (
-    <main>
-      <div className="feed__wrapper">
+    <main className="feedPage">
+      <div className="feedPage__wrapper">
         <h1 className="h1 colorBlue">Объявления</h1>
-        <div className="feed__cards">
+        <div className="feedPage__cards">
           {feed.map((value, index) => (
             <FeedCard title={value.title} content={value.content} date={value.date} key={index} />
           ))}
