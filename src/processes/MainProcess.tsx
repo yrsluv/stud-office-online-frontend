@@ -7,6 +7,8 @@ import { ConsultationPage } from '../pages/сonsultationPage/consultationPage';
 import { IllnessPage } from '../pages/illnessPage/illnessPage';
 import { FeedPage } from '../pages/feedPage/feedPage';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
+import { StudentsPage } from '../pages/studentsPage/studenstPage';
+import { AdminSchedulePage } from '../pages/adminSchedulePage/adminSchedulePage';
 
 const MainProcess = () => {
   return (
@@ -19,6 +21,8 @@ const MainProcess = () => {
           <Route path="study-cert" element={<StudyCertPage />} />
           <Route path="consultation" element={<ConsultationPage />} />
           <Route path="illness" element={<IllnessPage />} />
+          <Route path="students" element={<StudentsPage />} />
+          <Route path="schedule" element={<AdminSchedulePage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

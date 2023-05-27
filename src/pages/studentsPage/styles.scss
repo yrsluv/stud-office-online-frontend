@@ -1,0 +1,24 @@
+@import '../../index.scss';
+
+.feedPage {
+  align-items: flex-start !important;
+  overflow-y: auto;
+
+  .feedPage__wrapper {
+    background-color: $colorLightGray;
+    display: flex;
+    flex-direction: column;
+    padding-top: 45px;
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    padding: $defaultPadding;
+
+    .feedPage__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-bottom: 22px;
+    }
+  }
+}
