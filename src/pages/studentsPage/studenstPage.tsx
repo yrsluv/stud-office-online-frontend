@@ -3,55 +3,69 @@ import './styles.scss';
 import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from '../../api/axios';
+import { Role } from '../../contexts/authContext';
 
 const { Column, ColumnGroup } = Table;
 
-type Data = {
-  fullName: string;
-  faculty: string;
-  group: string;
-  course: string;
-  student_id: number;
+type Student = {
+  citizenship: string;
+  course: number;
+  educationBase: string;
+  educationEnd: string;
+  educationForm: string;
+  educationStart: string;
+  email: string;
+  faculty: { id: number; name: string };
+  firstName: string;
+  group: { id: number; name: string };
+  id: number;
+  lastName: string;
+  middleName: string;
+  orderNumber: string;
+  role: Role;
+  studentCard: string;
 };
 
 export const StudentsPage = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState<Data[]>([]);
+  const [students, setStudents] = useState<Student[]>([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const getData = async () => {
+    const getStudents = async () => {
       try {
-        const response = await axios.get<Data[]>('users/list');
-        setData(response.data);
+        const response = await axios.get<Student[]>('/Students');
+        setStudents(response.data);
         setError(false);
       } catch {
         setError(true);
       }
     };
-    getData();
+    getStudents();
   }, []);
-
-  const handleRowClick = (record: Data) => {
-    const { student_id } = record;
-    navigate(`student#${student_id}`);
-  };
 
   return (
     <main className="feedPage">
       <div className="feedPage__wrapper">
         <h1 className="h1 colorBlue">Список студентов</h1>
         <Table
-          dataSource={data}
+          dataSource={students.map((student) => ({
+            id: student.id,
+            fullName: [student.lastName, student.firstName, student.middleName].join(' '),
+            faculty: student.faculty,
+            group: student.group.name,
+            course: student.course,
+          }))}
+          rowKey={'id'}
           pagination={{ pageSize: 5 }}
-          onRow={(record) => ({
-            onClick: () => handleRowClick(record),
+          onRow={(student) => ({
+            onClick: () => navigate(`student#${student.id}`),
           })}
         >
-          <Column title="ФИО" dataIndex="fullName" key="fullName" />
-          <Column title="Факультет" dataIndex="faculty" key="faculty" />
-          <Column title="Группа" dataIndex="group" key="group" />
-          <Column title="Курс" dataIndex="course" key="course" />
+          <Column title="ФИО" dataIndex="fullName" />
+          <Column title="Факультет" dataIndex="faculty" />
+          <Column title="Группа" dataIndex="group" />
+          <Column title="Курс" dataIndex="course" />
         </Table>
         {error && <p className="colorRed p-small">Ошибка загрузки пользователей</p>}
       </div>

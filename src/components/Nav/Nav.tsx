@@ -30,13 +30,13 @@ const Nav = () => {
 
   return (
     <nav className="nav" role="navigation">
-      <ProtectedContent allowedRole={Role.Student}>
+      <ProtectedContent allowedRole="Student">
         <Tabs activeKey={activeKey} items={itemsStudent} onChange={(key) => navigate(`/${key}`)} />
       </ProtectedContent>
-      <ProtectedContent allowedRole={Role.Admin}>
+      <ProtectedContent allowedRole="Admin">
         <Tabs activeKey={activeKey} items={itemsAdmin} onChange={(key) => navigate(`/${key}`)} />
       </ProtectedContent>
-      <ProtectedContent allowedRole={Role.Teacher}>
+      <ProtectedContent allowedRole="Teacher">
         <Tabs activeKey={activeKey} items={itemsTeacher} onChange={(key) => navigate(`/${key}`)} />
       </ProtectedContent>
     </nav>
