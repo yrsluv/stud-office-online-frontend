@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import axiosInstance from '../../api/axios';
 import { Button } from 'antd';
 import jsPDF from 'jspdf';
 import '../../assets/times-normal';
@@ -25,8 +26,20 @@ type Student = {
   lastName: string;
   middleName: string;
   orderNumber: string;
+  orderDate: string;
   role: Role;
   studentCard: string;
+};
+
+const pgToDateString = (pg: string) => {
+  const date = dayjs(
+    new Date(Date.now() + 1000 * 60 * -new Date().getTimezoneOffset())
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', '')
+  );
+
+  return [date.date(), date.month(), date.year()].join('.');
 };
 
 const StudyCertPage = () => {
@@ -34,39 +47,38 @@ const StudyCertPage = () => {
   const [pdfGenError, setPdfGenError] = useState<boolean>(false);
 
   const handleGetSudyCert = async () => {
-    // let student: Student;
-    //
-    // const fetchStudent = async () => {
-    //   try {
-    //     const response = await axios.get<Student>('/Students/me');
-    //     student = response.data;
-    //     setPermissionError(false);
-    //   } catch {
-    //     setPermissionError(true);
-    //   }
-    // };
-    // await fetchStudent(); // TODO
+    let student: Student;
+
+    const fetchStudent = async () => {
+      try {
+        const response = await axiosInstance.get<Student>('/Students/me');
+        student = response.data;
+        setPermissionError(false);
+      } catch {
+        setPermissionError(true);
+      }
+    };
+    await fetchStudent();
 
     const generetePdf = async () => {
       try {
         const htmlResponse = await axios.get<string>('/study-cert.html');
 
-        const html = htmlResponse.data; // TODO: delete
-
-        // const html = htmlResponse.data
-        //   .replace('{date}', dayjs().date().toString())
-        //   .replace('{month}', dayjs().month().toString())
-        //   .replace('{year}', dayjs().year().toString())
-        //   .replace('{studentCard}', dayjs().year().toString())
-        //   .replace(
-        //     '{fullName}',
-        //     [student.lastName, student.firstName, student.middleName].join(' ')
-        //   )
-        //   .replace('{eduStartDate}', student.educationStart)
-        //   .replace('{eduEndDate}', student.educationEnd)
-        //   .replace('{orderNumber}', student.orderNumber)
-        //   .replace('{orderDate}', student.educationStart)
-        //   .replace('{educationBase}', student.educationBase); // TODO
+        const html = htmlResponse.data
+          .replace('{date}', dayjs().date().toString())
+          .replace('{month}', dayjs().month().toString())
+          .replace('{year}', dayjs().year().toString())
+          .replace('{studentCard}', dayjs().year().toString())
+          .replace(
+            '{fullName}',
+            [student.lastName, student.firstName, student.middleName].join(' ')
+          )
+          .replace('{course}', student.course.toString())
+          .replace('{eduStartDate}', pgToDateString(student.educationStart))
+          .replace('{eduEndDate}', pgToDateString(student.educationEnd))
+          .replace('{orderNumber}', student.orderNumber)
+          .replace('{orderDate}', pgToDateString(student.orderDate))
+          .replace('{educationBase}', student.educationBase);
 
         const doc = new jsPDF();
         doc.setLanguage('ru');

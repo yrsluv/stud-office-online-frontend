@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../api/axios';
 import { Role } from '../../contexts/authContext';
 
-const { Column, ColumnGroup } = Table;
+const { Column } = Table;
 
 type Student = {
   citizenship: string;
@@ -22,6 +22,7 @@ type Student = {
   lastName: string;
   middleName: string;
   orderNumber: string;
+  orderDate: string;
   role: Role;
   studentCard: string;
 };

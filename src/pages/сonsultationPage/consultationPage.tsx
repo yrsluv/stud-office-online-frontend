@@ -18,6 +18,7 @@ export const ConsultationPage = () => {
   const [error, setError] = useState<boolean>(true);
 
   const dayjsToPgDate = (dayjsDate: string) => `${dayjsDate}T00:00:00.000000Z`;
+  const dayjsToPgTime = (dayjsTime: string) => `${pickedDate}T${pickedTime}:00.000000Z`;
 
   useEffect(() => {
     if (pickedDate === null) return;
@@ -36,9 +37,18 @@ export const ConsultationPage = () => {
     fetchSlots();
   }, [pickedDate]);
 
-  const handleSubmit = () => null;
+  const handleSubmit = async () => {
+    if (pickedTime === null) return;
 
-  const allSlots = [
+    try {
+      await axios.post('/Consultations', { date: dayjsToPgTime(pickedTime) });
+      setError(false);
+    } catch {
+      setError(true);
+    }
+  };
+
+  const allSlots: Slot[] = [
     {
       time: '10:00',
       name: null,
@@ -76,37 +86,61 @@ export const ConsultationPage = () => {
       group: null,
     },
     {
-      time: '11:15',
+      time: '11:30',
       name: null,
       course: null,
       group: null,
     },
     {
-      time: '11:15',
+      time: '11:45',
       name: null,
       course: null,
       group: null,
     },
     {
-      time: '11:00',
+      time: '12:00',
       name: null,
       course: null,
       group: null,
     },
     {
-      time: '11:15',
+      time: '12:15',
       name: null,
       course: null,
       group: null,
     },
     {
-      time: '11:15',
+      time: '12:30',
       name: null,
       course: null,
       group: null,
     },
     {
-      time: '11:15',
+      time: '12:45',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '15:00',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '15:15',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '15:30',
+      name: null,
+      course: null,
+      group: null,
+    },
+    {
+      time: '15:45',
       name: null,
       course: null,
       group: null,
@@ -138,11 +172,11 @@ export const ConsultationPage = () => {
             <span className="consultation__label h4">Доступное время консультации</span>
             <Select
               status={error ? 'error' : ''}
-              defaultValue="00:00"
+              defaultValue="10:00"
               style={{ width: 282, height: 50 }}
-              onChange={handleChange}
+              onChange={(value) => setPickedTime(value)}
               options={allSlots
-                .filter((slot1) => fetchedSlots.every((slot2) => slot1 != slot2))
+                .filter((slot1) => fetchedSlots.every((slot2) => slot1.time != slot2.time))
                 .map((slot) => ({ value: slot.time, label: slot.time }))}
             />
             '
