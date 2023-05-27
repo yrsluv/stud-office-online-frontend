@@ -10,17 +10,17 @@ const Footer = () => {
             <p>249039, г.Обнинск Калужской обл., тер. Студгородок, 1. ИАТЭ</p>
             <p>
               Телефон:{' '}
-              <a className="colorBlue tel" href="tel:+74843979490">
+              <a className="colorRed tel" href="tel:+74843979490">
                 +7 (484) 397-94-90
               </a>{' '}
               доб. 111, факс:{' '}
-              <a className="colorBlue tel" href="tel:+74843970822">
+              <a className="colorRed tel" href="tel:+74843970822">
                 +7 (484) 397-08-22
               </a>
             </p>
             <p>
               E-mail:{' '}
-              <a className="colorBlue" href="mailto:info@iate.obninsk.ru">
+              <a className="colorRed" href="mailto:info@iate.obninsk.ru">
                 info@iate.obninsk.ru
               </a>
             </p>
@@ -29,19 +29,19 @@ const Footer = () => {
           <div>
             <p>
               Приемная комиссия:{' '}
-              <a className="colorBlue" href="www.iate.obninsk.ru/node/1364" target="_blank">
+              <a className="colorRed" href="www.iate.obninsk.ru/node/1364" target="_blank">
                 Абитуриенту
               </a>
             </p>
             <p>
               Телефон:{' '}
-              <a className="colorBlue tel" href="tel:+74843979490">
+              <a className="colorRed tel" href="tel:+74843979490">
                 +7 (484) 397-94-90 доб. 801
               </a>
             </p>
             <p>
               E-mail:{' '}
-              <a className="colorBlue" href="mailto:priem@iate.obninsk.ru">
+              <a className="colorRed" href="mailto:priem@iate.obninsk.ru">
                 priem@iate.obninsk.ru
               </a>
             </p>
@@ -55,13 +55,13 @@ const Footer = () => {
             <p className="footer__copyrightSmall">
               Использование новостных материалов сайта возможно только при наличии активной ссылки
               на{' '}
-              <a className="colorBlue" href="www.iate.obninsk.ru" target="_blank">
+              <a className="colorRed" href="www.iate.obninsk.ru" target="_blank">
                 www.iate.obninsk.ru
               </a>
             </p>
             <p className="footer__copyrightSmall">
               Размещение и обновление{' '}
-              <a className="colorBlue" href="www.iate.obninsk.ru/node/151" target="_blank">
+              <a className="colorRed" href="www.iate.obninsk.ru/node/151" target="_blank">
                 материалов на сайте
               </a>
             </p>

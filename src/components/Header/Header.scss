@@ -8,6 +8,8 @@
   align-items: center;
   max-width: 1200px;
   padding: $defaultPadding;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .header {
@@ -49,6 +51,20 @@
       width: 120px;
       display: flex;
       justify-content: center;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+
+      &.ant-tabs-tab-active {
+        font-weight: 700;
+      }
+      .ant-tabs-tab-btn {
+        color: $colorBlue;
+      }
+    }
+
+    .ant-tabs-ink-bar {
+      background-color: $colorBlue;
     }
   }
 }

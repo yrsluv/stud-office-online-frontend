@@ -10,7 +10,7 @@ interface ServiceButtonProps {
 const ServiceButton: React.FC<ServiceButtonProps> = ({ icon, title, navigate }) => {
   return (
     <div className="serviceButton__container" onClick={() => navigate()}>
-      {icon}
+      <div className="svg__wrapper">{icon}</div>
       <span className="paragraph">{title}</span>
     </div>
   );
