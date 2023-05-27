@@ -1,9 +1,6 @@
 @import '../../index.scss';
 
 .feedPage {
-  align-items: flex-start !important;
-  overflow-y: auto;
-
   .feedPage__wrapper {
     background-color: $colorLightGray;
     display: flex;
