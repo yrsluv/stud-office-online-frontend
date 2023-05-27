@@ -13,4 +13,33 @@
     background-color: $colorLightGray;
     overflow-y: auto;
   }
+
+  .button {
+    height: 50px;
+    min-width: 200px;
+    padding: 0 25px;
+    border-radius: 2px;
+    border: none;
+  }
+
+  .button_red {
+    background-color: $colorRed;
+
+    &:hover {
+      background-color: darken($colorRed, 5%);
+    }
+
+    &:active {
+      background-color: darken($colorRed, 10%);
+    }
+  }
+
+  .button_redborder {
+    background-color: none;
+    border: 1px solid $colorRed;
+  }
+
+  .button_blue {
+    background-color: $colorBlue;
+  }
 }

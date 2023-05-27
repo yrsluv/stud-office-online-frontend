@@ -42,7 +42,7 @@ const StudyCertPage = () => {
     <main className="studyCertPage" role="main">
       <div className="studyCertPage__wrapper">
         <h1 className="h1 colorBlue">Запрос справки об обучении</h1>
-        <Button type="primary" onClick={handleGetSudyCert}>
+        <Button type="primary" onClick={handleGetSudyCert} className="button button_red">
           Запросить справку об обучении
         </Button>
 

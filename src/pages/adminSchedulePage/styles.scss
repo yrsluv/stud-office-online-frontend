@@ -1,0 +1,64 @@
+@import '../../index.scss';
+
+.schedule__wrapper {
+  background-color: $colorLightGray;
+  display: flex;
+  flex-direction: column;
+  padding-top: 45px;
+  height: 100%;
+  max-width: 1200px;
+  width: 100%;
+
+  .schedule__inner {
+    display: flex;
+    gap: 24px;
+  }
+
+  .schedule__table {
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid #111111;
+    max-width: 894px;
+
+    .time-slot {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px;
+      width: 223px;
+
+      background: $colorWhite;
+      font-family: 'Ubuntu';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      min-height: 94.6px;
+      border-right: 1px solid #111111;
+      border-top: 1px solid #111111;
+      color: $colorGray;
+
+      &.time-slot__active {
+        color: $colorBlueHover;
+
+        background: #d4edff;
+      }
+
+      &:nth-child(4n) {
+        border-right: none;
+      }
+
+      &:nth-child(-n + 4) {
+        border-top: none;
+      }
+
+      .time-slot_time {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 120%;
+      }
+    }
+  }
+}

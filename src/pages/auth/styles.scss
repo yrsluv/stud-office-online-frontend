@@ -1,11 +1,19 @@
 @import '../../index.scss';
 
+.authPage__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  justify-content: space-between;
+}
+
 .authPage {
   display: flex;
   gap: 100px;
   align-items: center;
+  height: 100%;
   justify-content: center;
-  height: 100vh;
 
   .authLogos {
     display: flex;
@@ -38,7 +46,10 @@
 
       .authModal__field {
         input {
-          padding: 12px 24px;
+          padding: 12px 12px;
+        }
+        .authModal__email {
+          padding: 16px 23px;
         }
       }
     }
