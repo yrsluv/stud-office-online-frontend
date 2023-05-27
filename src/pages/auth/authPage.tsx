@@ -1,15 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './styles.scss';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button, Input } from 'antd';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
+import axios from '../../api/axios';
+import useAuth from '../../hooks/useAuth';
+import { Role } from '../../contexts/authContext';
+import { useNavigate } from 'react-router-dom';
+
+type ResponseData = {
+  id: number;
+  role: Role;
+  accessToken: string;
+  refreshToken: string;
+};
 
 export const AuthPage = () => {
-  const [response, setResponse] = useState<boolean | null>(true);
+  const { setAuth } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<boolean>(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(response);
-  }, [response]);
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post<ResponseData>('/Tokens', { email, password });
+      setAuth({
+        email,
+        id: response.data.id,
+        role: response.data.role,
+        accessToken: response.data.accessToken,
+      });
+      setError(false);
+      navigate('/');
+    } catch {
+      setError(true);
+    }
+  };
 
   return (
     <main role="main">
@@ -21,30 +48,31 @@ export const AuthPage = () => {
         <form className="authModal__container">
           <div className="authModal__fields colorGray">
             <div className="authModal__field">
-              <span className="authModal__label longRegular">E-mail </span>
-              <Input placeholder="Введите ваш e-mail" status={response ? undefined : 'error'} />
+              <span className="authModal__label longRegular">E-mail:</span>
+              <Input
+                placeholder="Введите ваш e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                status={error ? 'error' : undefined}
+              />
             </div>
             <div className="authModal__field">
-              <span className="authModal__label longRegular">Password</span>
+              <span className="authModal__label longRegular">Пароль:</span>
               <Input.Password
                 placeholder="Введите ваш пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                status={response ? undefined : 'error'}
+                status={error ? 'error' : undefined}
               />
             </div>
           </div>
 
           <div className="authModal__buttonContainer">
-            <Button
-              className="authModal__button longRegular"
-              type="primary"
-              onClick={() => {
-                setResponse(false);
-              }}
-            >
+            <Button className="authModal__button longRegular" type="primary" onClick={handleSubmit}>
               Войти
             </Button>
-            <p className={`authModal__errorAlert colorRed p-small ${!response && 'active'}`}>
+            <p className={`authModal__errorAlert colorRed p-small ${error && 'active'}`}>
               Неверный логин или пароль
             </p>
           </div>

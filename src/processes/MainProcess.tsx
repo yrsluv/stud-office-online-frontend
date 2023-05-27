@@ -5,19 +5,20 @@ import { ServicePage } from '../pages/servicePage/servicePage';
 import StudyCertPage from '../pages/StudyCertificatePage/StudyCertPage';
 import { ConsultationPage } from '../pages/сonsultationPage/consultationPage';
 import { IllnessPage } from '../pages/illnessPage/illnessPage';
+import PageNotFound from '../pages/PageNotFound/PageNotFound';
 
 const MainProcess = () => {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="*" element={<>PageNotFound</>} />
         <Route path="service">
           <Route index element={<ServicePage />} />
           <Route path="study-cert" element={<StudyCertPage />} />
           <Route path="consultation" element={<ConsultationPage />} />
           <Route path="illness" element={<IllnessPage />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </>
