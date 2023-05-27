@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './styles.scss';
-import ServiceButton from '../../components/serviceButton/serviceButton';
-import { ReactComponent as Heart } from '../../assets/heart.svg';
-import { ReactComponent as Reload } from '../../assets/reload.svg';
-import { ReactComponent as Calendar } from '../../assets/calendar.svg';
-import { ReactComponent as Document } from '../../assets/document.svg';
-import { useNavigate } from 'react-router-dom';
 
 interface Announcement {
   prevTitle?: string;
@@ -20,10 +14,6 @@ export const AddAnnouncementPage = (ann: Announcement) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  };
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log(formData);
   };
 
   return (

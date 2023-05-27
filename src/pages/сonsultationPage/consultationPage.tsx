@@ -1,27 +1,43 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './styles.scss';
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Select, Button } from 'antd';
+import axios from '../../api/axios';
+
+type Slot = {
+  time: string;
+  name: string | null;
+  course: number | null;
+  group: string | null;
+};
 
 export const ConsultationPage = () => {
   const [pickedTime, setPickedTime] = useState<string | null>(null);
   const [pickedDate, setPickedDate] = useState<string | null>(null);
-  const [isFieldsCorrect, setIsFieldsCorrect] = useState<boolean>(true);
+  const [fetchedSlots, setFetchedSlots] = useState<Slot[]>([]);
+  const [error, setError] = useState<boolean>(true);
 
-  const fetchedArr: any[] = [
-    {
-      time: '10:00',
-      name: 'Иванов И И',
-      course: 2,
-      group: 'ИВР23',
-    },
-    {
-      time: '10:30',
-      name: 'Иванов И И',
-      course: 2,
-      group: 'ИВР23',
-    },
-  ];
+  const dayjsToPgDate = (dayjsDate: string) => `${dayjsDate}T00:00:00.000000Z`;
+
+  useEffect(() => {
+    if (pickedDate === null) return;
+
+    const fetchSlots = async () => {
+      try {
+        const response = await axios.get<Slot[]>('/Consultations', {
+          params: { date: dayjsToPgDate(pickedDate) },
+        });
+        setFetchedSlots(response.data);
+        setError(false);
+      } catch {
+        setError(true);
+      }
+    };
+    fetchSlots();
+  }, [pickedDate]);
+
+  const handleSubmit = () => null;
+
   const allSlots = [
     {
       time: '10:00',
@@ -115,21 +131,19 @@ export const ConsultationPage = () => {
             <DatePicker
               onChange={onDateChange}
               style={{ width: 282, height: 50 }}
-              status={!isFieldsCorrect ? 'error' : ''}
+              status={error ? 'error' : ''}
             />
           </div>
           <div className="consultation__picker">
             <span className="consultation__label h4">Доступное время консультации</span>
             <Select
-              status={!isFieldsCorrect ? 'error' : ''}
+              status={error ? 'error' : ''}
               defaultValue="00:00"
               style={{ width: 282, height: 50 }}
               onChange={handleChange}
-              options={[
-                { value: '10:45', label: '10:45' },
-                { value: '11:00', label: '11:00' },
-                { value: '12:00', label: '12:00' },
-              ]}
+              options={allSlots
+                .filter((slot1) => fetchedSlots.every((slot2) => slot1 != slot2))
+                .map((slot) => ({ value: slot.time, label: slot.time }))}
             />
             '
           </div>
@@ -137,9 +151,7 @@ export const ConsultationPage = () => {
         <Button
           className="consultation__button button longRegular"
           type="primary"
-          onClick={() => {
-            pickedTime && pickedDate ? setIsFieldsCorrect(true) : setIsFieldsCorrect(false);
-          }}
+          onClick={handleSubmit}
         >
           Записаться
         </Button>

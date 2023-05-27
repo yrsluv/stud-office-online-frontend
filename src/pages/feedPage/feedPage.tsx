@@ -1,37 +1,52 @@
 import './styles.scss';
 import FeedCard from '../../components/feedCard/feedCard';
+import { useEffect, useState } from 'react';
+import axios from '../../api/axios';
+
+type Announcement = {
+  title: string;
+  content: string;
+  date: string;
+};
 
 export const FeedPage = () => {
-  const feed = [
-    {
-      title: 'Название объявления, название название',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      date: '12 мая 2023г.',
-    },
-    {
-      title: '1Название объявления, название название',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      date: '12 мая 2023г.',
-    },
-    {
-      title: '2Название объявления, название название',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      date: '12 мая 2023г.',
-    },
-  ];
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        const response = await axios.get<Announcement[]>('/announcement/list');
+        setAnnouncements(response.data);
+        setError(false);
+      } catch {
+        setError(true);
+      }
+    };
+    fetchAnnouncements();
+  }, []);
+
+  const pgToDate = (pg: string) =>
+    new Date(Date.now() + 1000 * 60 * -new Date().getTimezoneOffset())
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', '');
 
   return (
     <main className="feedPage">
       <div className="feedPage__wrapper">
         <h1 className="h1 colorBlue">Объявления</h1>
         <div className="feedPage__cards">
-          {feed.map((value, index) => (
-            <FeedCard title={value.title} content={value.content} date={value.date} key={index} />
+          {announcements.map((announcement, index) => (
+            <FeedCard
+              title={announcement.title}
+              content={announcement.content}
+              date={pgToDate(announcement.date).toString()}
+              key={index}
+            />
           ))}
         </div>
+        {error && <p className="colorRed p-small">Ошибка загрузки объявлений</p>}
       </div>
     </main>
   );
