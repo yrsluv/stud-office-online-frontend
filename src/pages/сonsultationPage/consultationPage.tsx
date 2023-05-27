@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './styles.scss';
 import type { DatePickerProps } from 'antd';
-import type { TimePickerProps } from 'antd';
-import { DatePicker, Space, Select, Button } from 'antd';
+import { DatePicker, Select, Button } from 'antd';
 
 export const ConsultationPage = () => {
   const [pickedTime, setPickedTime] = useState<string | null>(null);

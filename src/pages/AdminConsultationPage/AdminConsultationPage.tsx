@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './styles.scss';
 import type { DatePickerProps } from 'antd';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
 
-export const AdminSchedulePage = () => {
+export const AdminConsultationPage = () => {
   const [pickedDate, setPickedDate] = useState<string | null>(null);
 
   const fetchedArr: any[] = [

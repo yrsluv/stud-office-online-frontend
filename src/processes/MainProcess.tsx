@@ -8,7 +8,7 @@ import { IllnessCertificatePage } from '../pages/IllnessCertificatePage/IllnessC
 import { FeedPage } from '../pages/feedPage/feedPage';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import { StudentsPage } from '../pages/studentsPage/studenstPage';
-import { AdminSchedulePage } from '../pages/adminSchedulePage/adminSchedulePage';
+import { AdminConsultationPage } from '../pages/AdminConsultationPage/AdminConsultationPage';
 import { AddAnnouncementPage } from '../pages/addAnnouncement/addAnnouncementPage';
 
 const MainProcess = () => {
@@ -24,7 +24,7 @@ const MainProcess = () => {
           <Route path="consultation" element={<ConsultationPage />} />
           <Route path="illness" element={<IllnessCertificatePage />} />
           <Route path="students" element={<StudentsPage />} />
-          <Route path="schedule" element={<AdminSchedulePage />} />
+          <Route path="schedule" element={<AdminConsultationPage />} />
           <Route path="addannouncement" element={<AddAnnouncementPage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
