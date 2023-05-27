@@ -1,10 +1,6 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
 
-export enum Role {
-  Student,
-  Admin,
-  Teacher,
-}
+export type Role = 'Admin' | 'Student' | 'Teacher';
 
 export type Auth = {
   id: number;
